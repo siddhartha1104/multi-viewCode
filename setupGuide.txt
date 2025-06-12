@@ -1,0 +1,30 @@
+# Create a new environment with Python 3.9
+conda create -p venv python=3.9 -y
+conda activate venv
+
+# Install PyTorch with CUDA 12.1 (compatible with your 12.3)
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
+
+# Install core scientific packages
+conda install numpy scipy scikit-learn pandas matplotlib seaborn jupyter -c conda-forge -y
+
+# Install NLP packages
+conda install nltk -c conda-forge -y
+pip install spacy>=3.4
+python -m spacy download en_core_web_sm
+
+# Install transformers and other ML packages
+pip install transformers datasets evaluate tensorboard wandb
+
+# Install specific packages for EEG processing
+pip install mne>=1.0.0 allennlp
+
+# Install other commonly needed packages
+pip install tqdm pyyaml requests pillow opencv-python plotly
+pip install sacremoses sentencepiece rouge python-levenshtein
+pip install jsonnet overrides torch-summary
+
+# Test the installation
+python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
+
+
